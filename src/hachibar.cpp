@@ -1,4 +1,5 @@
 #include "hachibar.h"
+#include "limits.h"
 
 Hachibar::Hachibar(){
 }
@@ -148,25 +149,25 @@ void Hachibar::updateKey(){
     byte in = PINB;
 
     if((in | 0B11111110) == 0B11111110){ // PB6 is LOW
-      trigger[BTN_LEFT] ++;
+      if(trigger[BTN_LEFT] < INT_MAX - 1)trigger[BTN_LEFT] ++;
     }else{
       trigger[BTN_LEFT] = -1;
     }
 
     if((in | 0B11111101) == 0B11111101){ // PB6 is LOW
-      trigger[BTN_RIGHT] ++;
+      if(trigger[BTN_RIGHT] < INT_MAX - 1)trigger[BTN_RIGHT] ++;
     }else{
       trigger[BTN_RIGHT] = -1;
     }
 
     if((in | 0B11111011) == 0B11111011){ // PB6 is LOW
-      trigger[BTN_UP] ++;
+      if(trigger[BTN_UP] < INT_MAX - 1)trigger[BTN_UP] ++;
     }else{
       trigger[BTN_UP] = -1;
     }
 
     if((in | 0B11110111) == 0B11110111){ // PB6 is LOW
-      trigger[BTN_DOWN] ++;
+      if(trigger[BTN_DOWN] < INT_MAX - 1)trigger[BTN_DOWN] ++;
     }else{
       trigger[BTN_DOWN] = -1;
     }
